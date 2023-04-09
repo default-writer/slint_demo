@@ -151,10 +151,13 @@ inline auto HelloWorld::init (const HelloWorld * root,slint::cbindgen_private::C
                             [[maybe_unused]] auto self = this;
                             return [&]{ auto minmax_lhs38 = self->root_1_label_2_preferred_width.get();;auto minmax_rhs38 = self->root_1_label_2_min_width.get();;return [&]() -> float { if (minmax_lhs38 > minmax_rhs38) { return minmax_lhs38; } else { return minmax_rhs38; }}(); }();
                         });
-    self->label_2.x.set(200);
+    self->label_2.x.set_binding([this]() {
+                            [[maybe_unused]] auto self = this;
+                            return ((self->root_1.width.get() - self->label_2.width.get()) /(float) 2);
+                        });
     self->label_2.y.set_binding([this]() {
                             [[maybe_unused]] auto self = this;
-                            return (self->root_1.width.get() /(float) 2);
+                            return ((self->root_1.height.get() - self->label_2.height.get()) /(float) 2);
                         });
 }
 
@@ -164,7 +167,7 @@ inline auto HelloWorld::user_init () -> void{
 
 inline auto HelloWorld::layout_info (slint::cbindgen_private::Orientation o) const -> slint::cbindgen_private::LayoutInfo{
     [[maybe_unused]] auto self = this;
-    return o == slint::cbindgen_private::Orientation::Horizontal ? [&]{ auto layout_info = SLINT_GET_ITEM_VTABLE(WindowItemVTable)->layout_info({SLINT_GET_ITEM_VTABLE(WindowItemVTable), const_cast<slint::cbindgen_private::WindowItem*>(&self->root_1)}, slint::cbindgen_private::Orientation::Horizontal, &self->root->window().window_handle());;return [&](const auto &a_0, const auto &a_1, const auto &a_2, const auto &a_3, const auto &a_4, const auto &a_5){ slint::cbindgen_private::LayoutInfo o{}; o.max = a_0; o.max_percent = a_1; o.min = a_2; o.min_percent = a_3; o.stretch = a_4; o.preferred = a_5; return o; }(self->root_1.width.get(), layout_info.max_percent, self->root_1.width.get(), layout_info.min_percent, layout_info.stretch, layout_info.preferred); }() : [&]{ auto layout_info = SLINT_GET_ITEM_VTABLE(WindowItemVTable)->layout_info({SLINT_GET_ITEM_VTABLE(WindowItemVTable), const_cast<slint::cbindgen_private::WindowItem*>(&self->root_1)}, slint::cbindgen_private::Orientation::Vertical, &self->root->window().window_handle());;return [&](const auto &a_0, const auto &a_1, const auto &a_2, const auto &a_3, const auto &a_4, const auto &a_5){ slint::cbindgen_private::LayoutInfo o{}; o.min_percent = a_0; o.preferred = a_1; o.min = a_2; o.max = a_3; o.stretch = a_4; o.max_percent = a_5; return o; }(layout_info.min_percent, layout_info.preferred, self->root_1.height.get(), self->root_1.height.get(), layout_info.stretch, layout_info.max_percent); }();
+    return o == slint::cbindgen_private::Orientation::Horizontal ? [&]{ auto layout_info = SLINT_GET_ITEM_VTABLE(WindowItemVTable)->layout_info({SLINT_GET_ITEM_VTABLE(WindowItemVTable), const_cast<slint::cbindgen_private::WindowItem*>(&self->root_1)}, slint::cbindgen_private::Orientation::Horizontal, &self->root->window().window_handle());;return [&](const auto &a_0, const auto &a_1, const auto &a_2, const auto &a_3, const auto &a_4, const auto &a_5){ slint::cbindgen_private::LayoutInfo o{}; o.min = a_0; o.preferred = a_1; o.max = a_2; o.max_percent = a_3; o.stretch = a_4; o.min_percent = a_5; return o; }(self->root_1.width.get(), layout_info.preferred, self->root_1.width.get(), layout_info.max_percent, layout_info.stretch, layout_info.min_percent); }() : [&]{ auto layout_info = SLINT_GET_ITEM_VTABLE(WindowItemVTable)->layout_info({SLINT_GET_ITEM_VTABLE(WindowItemVTable), const_cast<slint::cbindgen_private::WindowItem*>(&self->root_1)}, slint::cbindgen_private::Orientation::Vertical, &self->root->window().window_handle());;return [&](const auto &a_0, const auto &a_1, const auto &a_2, const auto &a_3, const auto &a_4, const auto &a_5){ slint::cbindgen_private::LayoutInfo o{}; o.max = a_0; o.max_percent = a_1; o.min_percent = a_2; o.min = a_3; o.stretch = a_4; o.preferred = a_5; return o; }(self->root_1.height.get(), layout_info.max_percent, layout_info.min_percent, self->root_1.height.get(), layout_info.stretch, layout_info.preferred); }();
 }
 
 inline auto HelloWorld::accessible_role (uintptr_t index) const -> slint::cbindgen_private::AccessibleRole{

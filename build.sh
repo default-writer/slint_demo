@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+SLINT_BACKEND=winit cmake  -DSLINT_FEATURE_BACKEND_WINIT=OFF -DSLINT_FEATURE_BACKEND_WINIT_WAYLAND=ON -DCMAKE_PREFIX_PATH=$(pwd)/slint .
+cmake --build .
