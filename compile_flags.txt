@@ -1,0 +1,5 @@
+-Islint/lib
+-Islint/include/slint
+-DSLINT_FEATURE_BACKEND_WINIT=OFF
+-DSLINT_FEATURE_BACKEND_WINIT_WAYLAND=ON
+-DCMAKE_PREFIX_PATH=/home/user/code/slint_demo/slint

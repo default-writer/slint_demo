@@ -3,3 +3,4 @@ _deps
 slint
 *.cmake
 CMakeFiles
+cargo/
